@@ -9,7 +9,7 @@ export class AppController {
 
     for (const key in id) {
 
-      return this.appService.getMenber(key.replaceAll('\x00', ''));
+      return this.appService.getMenber(key.replace('\x00', ''));
     }
   }
 }
