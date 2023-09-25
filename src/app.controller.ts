@@ -1,12 +1,15 @@
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Get, Param, Req } from '@nestjs/common';
 import { AppService } from './app.service';
-
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly appService: AppService) { }
 
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  @Get('partner/')
+  getMenber(@Body() id) {
+
+    for (const key in id) {
+
+      return this.appService.getMenber(key.replaceAll('\x00', ''));
+    }
   }
 }
