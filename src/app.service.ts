@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
-
+const fs = require('fs');
+const user = require('../data/user.json');
 @Injectable()
 export class AppService {
   static token = '';
@@ -40,6 +41,7 @@ export class AppService {
 
   }
   async getPartnerMumber(client_account) {
+
     const axios = require('axios');
     let config = {
       method: 'get',
@@ -51,6 +53,16 @@ export class AppService {
     };
     const datasPartNer = await axios.request(config)
       .then((response) => {
+        user.data.push(response.data.data[0]);
+
+        const jsonString = JSON.stringify(user);
+        fs.writeFile('./data/user.json', jsonString, err => {
+          if (err) {
+            console.log('Error writing file', err)
+          } else {
+            console.log('Successfully wrote file')
+          }
+        })
         return response.data.totals.count;
       })
       .catch((error) => {
