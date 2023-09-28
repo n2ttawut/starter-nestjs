@@ -56,12 +56,7 @@ export class AppService {
         user.data.push(response.data.data[0]);
 
         const jsonString = JSON.stringify(user);
-        
-        console.log('Error writing __dirname', __dirname + '/data/user.json');
-        console.log('Error writing __filename', __filename );
-        console.log('Error writing file', __dirname );
-        console.log(__dirname);
-        fs.writeFileSync(__dirname + '/data/user.json', jsonString, err => {
+        fs.writeFileSync('dist/user1.json', jsonString, err => {
           if (err) {
             console.log('Error writing file', err)
           } else {
