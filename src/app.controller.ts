@@ -6,7 +6,7 @@ const user = require('../data/user.json');
 export class AppController {
   constructor(private readonly appService: AppService) { }
 
-  @Get('partner/')
+  @Get()
   getMenber(@Body() ids) {
     for (const key in ids) {
       let accOwner = find(user.account, { id: Number(key.replace('\x00', '')) })
