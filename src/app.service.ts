@@ -68,7 +68,7 @@ export class AppService {
       .catch((error) => {
         console.log(error);
       });
-    return datasPartNer.toString();
+    return (datasPartNer)?datasPartNer.toString():0;
 
   }
 }
