@@ -56,7 +56,7 @@ export class AppService {
         user.data.push(response.data.data[0]);
 
         const jsonString = JSON.stringify(user);
-        fs.writeFileSync('user1.json', jsonString, err => {
+        fs.writeFileSync('../data/user.json', jsonString, err => {
           if (err) {
             console.log('Error writing file', err)
           } else {
