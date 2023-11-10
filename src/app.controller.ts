@@ -9,6 +9,7 @@ export class AppController {
   @Get('/')
   getMenber(@Body() ids) {
     for (const key in ids) {
+      console.log("🚀 ~ file: DeriverCar.php:66 ~ sale:", ids)
       let accOwner = find(user.account, { id: Number(key.replace('\x00', '')) })
       let accPastner = find(user.data, { client_account: Number(key.replace('\x00', '')) })
       if (accOwner || accPastner ) {
